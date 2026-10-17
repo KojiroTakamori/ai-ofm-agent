@@ -1,0 +1,16 @@
+{
+  "model_id": "jade-ny-test",
+  "name": "Jade Kim",
+  "niche": "NYC Fashion Intern (Unvalidated Test Batch)",
+  "fans": 85,
+  "cac": 8.0,
+  "ltv": 5.76,
+  "revenue": 490.0,
+  "ad_spend": 680.0,
+  "gen_spend": 460.0,
+  "gen_to_rev_pct": 93.9,
+  "net_profit": -650.0,
+  "roi_pct": -57.0,
+  "verdict": "KILL_AND_REPLACE",
+  "recommended_action": "CAC ($8.00) > $7.00 & LTV ($5.76) < $12.00. Drop model immediately and reallocate her 30 social accounts to a new niche."
+}
