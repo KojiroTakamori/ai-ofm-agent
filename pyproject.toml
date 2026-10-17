@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ai-ofm-agent"
-version = "1.0.0"
-description = "Autonomous AI OFM Agency Agent (6-Layer Architecture: Central Brain, 6-Chapter Overnight Closer, Model Factory, Social/Phone Farm Matrix & KPI Gatekeeper)"
+version = "1.1.0"
+description = "Autonomous AI OFM Agency Agent (7-Layer Architecture & 6-Agent Council: Central Brain, Overnight Closer, Model Factory, Visual Pipeline, Social/Phone Farm Matrix, KPI Gatekeeper & Legal Guardian)"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = []

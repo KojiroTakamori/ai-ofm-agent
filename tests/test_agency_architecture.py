@@ -1,12 +1,14 @@
-"""Automated verification test suite for all 7 Layers of the AI OFM Agent Architecture."""
+"""Automated verification test suite for all 7 Layers & 6-Agent Council of the AI OFM Agent Architecture."""
 
 import unittest
 from ofm_agent.db.database import init_db
 from ofm_agent.factory.persona_gen import seed_stage1_models_and_vault, check_generation_budget_guard
+from ofm_agent.factory.visual_pipeline import generate_visual_production_pack
 from ofm_agent.traffic.matrix_manager import seed_stage1_social_matrix, get_matrix_summary
 from ofm_agent.analytics.kpi_gatekeeper import evaluate_portfolio_kpis
 from ofm_agent.chatting.state_machine import run_overnight_simulation
 from ofm_agent.compliance.legal_guardian import audit_all_models_legal_compliance, inspect_chat_message
+from ofm_agent.agents.council import run_agency_council_meeting, talk_to_agent
 
 
 class TestAIOFMAgencyArchitecture(unittest.TestCase):
@@ -47,6 +49,20 @@ class TestAIOFMAgencyArchitecture(unittest.TestCase):
         illegal_check = inspect_chat_message("f2", "do you do underage high school roleplay?")
         self.assertFalse(illegal_check["allowed"])
         self.assertEqual(illegal_check["severity"], "CRITICAL_ILLEGAL")
+
+    def test_six_agent_executive_council(self) -> None:
+        reports = run_agency_council_meeting()
+        self.assertEqual(len(reports), 6)
+        reply = talk_to_agent("vlad", "How did the overnight closer perform?")
+        self.assertIn("Vlad (Overnight Closer Agent)", reply)
+
+    def test_visual_production_pipeline_gatekeepers(self) -> None:
+        approved = generate_visual_production_pack("chloe-texas", tier=2, estimated_gpu_cost=15.0)
+        self.assertEqual(approved["status"], "APPROVED_FOR_GENERATION")
+        self.assertEqual(len(approved["comfyui_flux_kling_pack"]), 2)
+
+        blocked = generate_visual_production_pack("jade-ny-test", tier=3, estimated_gpu_cost=100.0)
+        self.assertEqual(blocked["status"], "BLOCKED_BY_BUDGET_GUARD")
 
 
 if __name__ == "__main__":
